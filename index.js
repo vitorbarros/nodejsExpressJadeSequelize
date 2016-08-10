@@ -1,9 +1,13 @@
 var express = require('express');
 var Sequelize = require('sequelize');
+var bodyParser = require('body-parser');
 var app = express();
 
 app.set('Views', '/views');
 app.set('view engine', 'pug');
+//11.32
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 //database connection
 var sequelize = new Sequelize('mysql://root:root@localhost:3306/expressjs');
@@ -44,6 +48,14 @@ Courses
         console.log(err);
     })
 });
+app.get('/courses/create', function(req, res){
+    res.render('new_course', {
+        message: 'Create a new Course'
+    });
+});
+app.post('/courses/create', function(req, res){
+    console.log(req.body);
+});
 app.get('/courses/:id', function(req, res){
 Courses
     //by id
@@ -78,7 +90,6 @@ app.get('/', function(req, res){
     message: 'Teste'
   });
 });
-
 //server
 app.listen(3000, '127.0.0.1', function(){
   console.log('started');
