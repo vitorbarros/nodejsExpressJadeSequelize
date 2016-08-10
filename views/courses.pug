@@ -13,9 +13,17 @@ html
                 th ID
                 th Name
                 th Description
+                th Action
+                th Edit
         tbody
             each obj in data
                 tr
                     td= obj.id
                     td= obj.name
                     td= obj.description
+                    td
+                      form(method="post", action="/courses/" + obj.id)
+                        input(type="hidden", value="DELETE", name="_method")
+                        button(type="submit") Delete
+                    th
+                      a(href="http://localhost:3000/courses/edit/" + obj.id) Edit

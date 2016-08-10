@@ -1,0 +1,11 @@
+html
+  head
+    title
+  body
+    h2= message
+    form(method="post", action="/courses/edit/" + data.id)
+        input(type="hidden", name="_method" value="PUT")
+        input(type="text", name="name" value=data.name)
+        input(type="text", name="description" value=data.description)
+        input(type="text", name="teacher" value=data.teacher)
+        input(type="submit", value="Update Course")
