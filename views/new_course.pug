@@ -1,0 +1,10 @@
+html
+  head
+    title
+  body
+    h2= message
+    form(method="post", action="/courses/create")
+        input(type="text", name="name")
+        input(type="text", name="description")
+        input(type="text", name="teacher")
+        input(type="submit", value="New course")
