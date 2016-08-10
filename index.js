@@ -6,7 +6,8 @@ app.set('view engine', 'pug');
 
 app.get('/', function(req, res){
   res.render('index', {
-    message: 'Teste'
+    message: 'Teste',
+    count: 5
   });
 });
 
